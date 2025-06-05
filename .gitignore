@@ -1,0 +1,7 @@
+# Node artifacts
+frontend/node_modules
+frontend/dist
+
+# Python virtual envs
+*.pyc
+__pycache__/
