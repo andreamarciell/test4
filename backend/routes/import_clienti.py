@@ -8,6 +8,12 @@ from datetime import datetime
 
 router = APIRouter()
 
+@router.get("/clienti")
+def lista_clienti():
+    """Restituisce tutti i clienti presenti nel database."""
+    with Session(engine) as session:
+        return session.exec(select(Cliente)).all()
+
 @router.post("/importa-clienti/")
 async def importa_clienti(file: UploadFile = File(...)):
     if not file.filename.endswith('.csv'):

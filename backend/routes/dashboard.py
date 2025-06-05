@@ -5,6 +5,11 @@ from models import ProfiloRischio, TriggerRischio
 
 router = APIRouter()
 
+@router.get("/tutti-profili-rischio")
+def tutti_profili_rischio():
+    with Session(engine) as session:
+        return session.exec(select(ProfiloRischio)).all()
+
 @router.get("/clienti/{cliente_id}/profili-rischio")
 def get_profili_rischio(cliente_id: int):
     with Session(engine) as session:
