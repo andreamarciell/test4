@@ -1,5 +1,12 @@
 from fastapi import APIRouter, HTTPException
 from sqlmodel import Session, select
+from backend.db import engine
+from backend.models import Cliente, ProfiloRischio, TriggerRischio
+from backend.services.serpapi_client import cerca_articoli_google
+from backend.services.article_scraper import estrai_testo_articolo
+from backend.services.nlp_analysis import analizza_testo_articolo
+from backend.services.scoring import calcola_rischio
+
 from ..db import engine
 from ..models import Cliente, ProfiloRischio, TriggerRischio
 from ..services.serpapi_client import cerca_articoli_google

@@ -1,17 +1,22 @@
-# STEP 1 – BUILD FRONTEND
+# STEP 1 - BUILD FRONTEND
 FROM node:18 as frontend-builder
-WORKDIR /app
-COPY frontend/ ./frontend
 WORKDIR /app/frontend
-RUN npm install && npm run build
+COPY frontend/package*.json ./
+RUN npm install
+COPY frontend/ ./
+RUN npm run build
 
-# STEP 2 – BACKEND + STATIC MERGE
+# STEP 2 - BACKEND + STATIC MERGE
 FROM python:3.11-slim
 WORKDIR /app
 
 COPY backend/ ./backend
 COPY --from=frontend-builder /app/frontend/dist ./frontend_dist
 
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r backend/requirements.txt \
+    && python -m spacy download it_core_news_sm
+=======
 RUN pip install --upgrade pip
 RUN pip install -r backend/requirements.txt
 RUN python -m spacy download it_core_news_sm

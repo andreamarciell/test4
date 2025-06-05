@@ -1,5 +1,12 @@
 from fastapi import FastAPI
 from sqlmodel import SQLModel
+from backend.db import engine
+from backend.routes.analisi import router as analisi_router
+from backend.routes.dashboard import router as dashboard_router
+from backend.routes.report import router as report_router
+from backend.routes.admin_regole import router as admin_router
+from backend.routes.import_clienti import router as import_router
+
 from .db import engine
 from .routes.analisi import router as analisi_router
 from .routes.dashboard import router as dashboard_router

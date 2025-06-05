@@ -1,5 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from sqlmodel import Session, select
+from backend.db import engine
+from backend.models import RegolaRischio
+
 from ..db import engine
 from ..models import RegolaRischio
 

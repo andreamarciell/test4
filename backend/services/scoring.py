@@ -1,3 +1,7 @@
+from backend.models import RegolaRischio
+from sqlmodel import Session, select
+from backend.db import engine
+
 from ..models import RegolaRischio
 from sqlmodel import Session, select
 from ..db import engine
