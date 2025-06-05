@@ -3,6 +3,9 @@ from sqlmodel import Session, select
 from backend.db import engine
 from backend.models import ProfiloRischio, TriggerRischio
 
+from ..db import engine
+from ..models import ProfiloRischio, TriggerRischio
+
 router = APIRouter()
 
 @router.get("/tutti-profili-rischio")
