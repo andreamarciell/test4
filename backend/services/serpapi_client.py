@@ -1,10 +1,16 @@
+import os
 import requests
 from typing import List
 from urllib.parse import quote
 
-SERPAPI_KEY = "de89ead1a44b2aaca95d62ffc20554327dac3ca8559a4ad903fdc733a7fa4f17"
+# The API key is now read from the environment to avoid hardcoding
+SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 
 def cerca_articoli_google(nome: str, cognome: str, limiti: int = 5) -> List[str]:
+    if not SERPAPI_KEY:
+        # missing API key -> nothing to search
+        return []
+
     query = f'"{nome} {cognome}"'
     url = f"https://serpapi.com/search.json?q={quote(query)}&api_key={SERPAPI_KEY}&hl=it&gl=it"
 
