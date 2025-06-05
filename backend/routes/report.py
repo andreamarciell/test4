@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 from sqlmodel import Session, select
-from models import Cliente, ProfiloRischio
-from db import engine
-from services.report_generator import genera_report_docx
+from backend.models import Cliente, ProfiloRischio
+from backend.db import engine
+from backend.services.report_generator import genera_report_docx
 import os
 
 router = APIRouter()

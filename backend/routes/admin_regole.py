@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from sqlmodel import Session, select
-from db import engine
-from models import RegolaRischio
+from backend.db import engine
+from backend.models import RegolaRischio
 
 router = APIRouter()
 
