@@ -1,11 +1,16 @@
 from fastapi import FastAPI
-from routes.analisi import router as analisi_router
-from routes.dashboard import router as dashboard_router
-from routes.report import router as report_router
-from routes.admin_regole import router as admin_router
-from routes.import_clienti import router as import_router
+from sqlmodel import SQLModel
+from backend.db import engine
+from backend.routes.analisi import router as analisi_router
+from backend.routes.dashboard import router as dashboard_router
+from backend.routes.report import router as report_router
+from backend.routes.admin_regole import router as admin_router
+from backend.routes.import_clienti import router as import_router
 
 app = FastAPI()
+
+# Ensure tables are created at startup
+SQLModel.metadata.create_all(engine)
 
 app.include_router(analisi_router)
 app.include_router(dashboard_router)

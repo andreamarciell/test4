@@ -1,12 +1,18 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from sqlmodel import Session, select
-from db import engine
-from models import Cliente
+from backend.db import engine
+from backend.models import Cliente
 import csv
 from io import StringIO
 from datetime import datetime
 
 router = APIRouter()
+
+@router.get("/clienti")
+def lista_clienti():
+    """Restituisce tutti i clienti presenti nel database."""
+    with Session(engine) as session:
+        return session.exec(select(Cliente)).all()
 
 @router.post("/importa-clienti/")
 async def importa_clienti(file: UploadFile = File(...)):
