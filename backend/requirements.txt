@@ -5,3 +5,5 @@ spacy
 newspaper3k
 python-docx
 requests
+python-multipart
+lxml_html_clean
