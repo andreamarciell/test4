@@ -1,11 +1,11 @@
-# STEP 1 – BUILD FRONTEND
+# STEP 1 - BUILD FRONTEND
 FROM node:18 as frontend-builder
 WORKDIR /app
 COPY frontend/ ./frontend
 WORKDIR /app/frontend
 RUN npm install && npm run build
 
-# STEP 2 – BACKEND + STATIC MERGE
+# STEP 2 - BACKEND + STATIC MERGE
 FROM python:3.11-slim
 WORKDIR /app
 
