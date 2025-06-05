@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Query
 from sqlmodel import Session, select
-from db import engine
-from models import ProfiloRischio, TriggerRischio
+from ..db import engine
+from ..models import ProfiloRischio, TriggerRischio
 
 router = APIRouter()
 

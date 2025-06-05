@@ -1,7 +1,7 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from sqlmodel import Session, select
-from db import engine
-from models import Cliente
+from ..db import engine
+from ..models import Cliente
 import csv
 from io import StringIO
 from datetime import datetime
